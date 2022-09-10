@@ -17,12 +17,21 @@
     </thead>
     <tbody>
     <tr th:each="user : ${users}">
-        <td>
-            <a th:href="@{/{id}(id=${user.getId()})}" th:text="${user.getId()}"/>
-        </td>>
+        <td th:text="${user.getId()}"/>
         <td th:text="${user.getName()}"/>
         <td th:text="${user.getSurname()}"/>
         <td th:text="${user.getEmail()}"/>
+        <td>
+
+            <a th:href="@{/{id}(id=${user.getId()})}">
+                <input type="submit" value="Edit">
+            </a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/delete/{id}(id=${user.getId()})}" >
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
     </tr>
     <tfoot>
     <tr>
